@@ -13,6 +13,7 @@ CREATE TABLE movies
 (
   title VARCHAR(255),
   genre VARCHAR(255),
+  budget INT4,
   id SERIAL4 PRIMARY KEY
 );
 
