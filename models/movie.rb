@@ -20,10 +20,10 @@ class Movie
     budget
     ) VALUES (
       $1, $2, $3
-      ) RETURNING id"
-      values = [@title, @genre, @budget]
-      movie = SqlRunner.run( sql, values).first
-      @id = movie["id"].to_i
+    ) RETURNING id"
+    values = [@title, @genre, @budget]
+    movie = SqlRunner.run( sql, values).first
+    @id = movie["id"].to_i
   end
 
   def self.all()
@@ -41,10 +41,10 @@ class Movie
     ) =
     (
       $1, $2, $3
-      )
-      WHERE id = $4"
-      values = [@title, @genre, @budget, @id]
-      SqlRunner.run( sql, values )
+    )
+    WHERE id = $4"
+    values = [@title, @genre, @budget, @id]
+    SqlRunner.run( sql, values )
   end
 
   def self.delete_all()
@@ -62,7 +62,6 @@ class Movie
   end
 
   def remaining_budget()
-
     sql = "SELECT castings.* FROM castings INNER JOIN stars ON castings.star_id = stars.id WHERE movie_id = $1"
     values = [@id]
     castings = SqlRunner.run(sql, values)
@@ -72,6 +71,5 @@ class Movie
     remaining_movie_budget = @budget - total_fees
     return remaining_movie_budget
   end
-
 
 end

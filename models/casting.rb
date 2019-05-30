@@ -18,10 +18,10 @@ class Casting
     fee
     ) VALUES (
       $1, $2, $3
-      ) RETURNING id"
-      values = [@movie_id, @star_id, @fee]
-      casting = SqlRunner.run( sql, values ).first
-      @id = casting["id"].to_i
+    ) RETURNING id"
+    values = [@movie_id, @star_id, @fee]
+    casting = SqlRunner.run( sql, values ).first
+    @id = casting["id"].to_i
   end
 
   def self.all()
@@ -39,10 +39,10 @@ class Casting
     ) =
     (
       $1, $2, $3
-      )
-      WHERE id = $4"
-      values = [@movie_id, @star_id, @fee, @id]
-      SqlRunner.run( sql, values )
+    )
+    WHERE id = $4"
+    values = [@movie_id, @star_id, @fee, @id]
+    SqlRunner.run( sql, values )
   end
 
   def self.delete_all()
